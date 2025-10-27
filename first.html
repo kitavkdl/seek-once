@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SEEK-ONCE</title>
+  <style>
+    .site-credit{
+      position: fixed;
+      right: 16px;
+      bottom: 14px;
+      z-index: 9999;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      font-size: 12px;
+      line-height: 1;
+      color: #4b5563;
+      background: rgba(255,255,255,.85);
+      backdrop-filter: blur(6px);
+      padding: 6px 10px;
+      border-radius: 999px;
+      box-shadow: 0 4px 16px rgba(0,0,0,.08);
+      text-decoration: none;
+      transition: opacity .2s ease, transform .2s ease;
+      opacity: .9;
+    }
+    .site-credit:hover{
+      opacity: 1;
+      transform: translateY(-1px);
+    }
+    @media (prefers-color-scheme: dark){
+      .site-credit{
+        color: #d1d5db;
+        background: rgba(17,24,39,.72);
+        box-shadow: 0 6px 20px rgba(0,0,0,.35);
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="site-credit" href="#" aria-label="Site credit">
+    made by SBU and UTAH students
+  </a>
+</body>
+</html>
