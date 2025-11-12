@@ -1,49 +1,13 @@
-<!-- ㅑ used index.html as the file name to show up this site. we're going to change it, so don't think about this file -->
-<!-- As you know, Avoid distributing it directly to the website. It should be distributed after being thoroughly checked by localhost.
-Since I've already connected it to vercel, if you push it to GitHub, it's linked to the website in real time. -->
-
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>SEEK-ONCE</title>
-    <style>
-      .site-credit {
-        position: fixed;
-        right: 16px;
-        bottom: 14px;
-        z-index: 9999;
-        font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica,
-          Arial, sans-serif;
-        font-size: 12px;
-        line-height: 1;
-        color: #4b5563;
-        background: rgba(255, 255, 255, 0.85);
-        backdrop-filter: blur(6px);
-        padding: 6px 10px;
-        border-radius: 999px;
-        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
-        text-decoration: none;
-        transition: opacity 0.2s ease, transform 0.2s ease;
-        opacity: 0.9;
-      }
-      .site-credit:hover {
-        opacity: 1;
-        transform: translateY(-1px);
-      }
-      @media (prefers-color-scheme: dark) {
-        .site-credit {
-          color: #d1d5db;
-          background: rgba(17, 24, 39, 0.72);
-          box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
-        }
-      }
-    </style>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>seek-once</title>
   </head>
   <body>
-    <a class="site-credit" href="#" aria-label="Site credit">
-      made by SBU and UTAH students
-    </a>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
