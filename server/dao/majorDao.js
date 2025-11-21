@@ -1,5 +1,5 @@
 // majorDao.js
-const db = require('../db'); // <- your pg Pool/Client export
+const db = require('../server.js'); // <- your pg Pool/Client export
 
 async function getAllMajors() {
   const query = 'SELECT id, dept, major_name, specialization FROM major';
