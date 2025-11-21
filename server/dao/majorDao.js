@@ -1,20 +1,29 @@
-// majorDao.js
-const db = require('../db'); // <- your pg Pool/Client export
+import { supabase } from '../config/supabaseClient.js';
 
-async function getAllMajors() {
-  const query = 'SELECT id, dept, major_name, specialization FROM major';
-  const { rows } = await db.query(query);
-  return rows;
+// Get all majors
+export async function getAllMajors() {
+  const { data, error } = await supabase.from('major').select('*');
+
+  if (error) {
+    console.error('Error fetching majors:', error);
+    throw error;
+  }
+
+  return data;
 }
 
-async function getMajorById(id) {
-  const query =
-    'SELECT id, dept, major_name, specialization FROM major WHERE id = $1';
-  const { rows } = await db.query(query, [id]);
-  return rows[0] || null;
-}
+// Get major by id
+export async function getMajorById(id) {
+  const { data, error } = await supabase
+    .from('major')
+    .select('*')
+    .eq('id', id)
+    .single();
 
-module.exports = {
-  getAllMajors,
-  getMajorById,
-};
+  if (error) {
+    console.error('Error fetching major by ID:', error);
+    throw error;
+  }
+
+  return data;
+}

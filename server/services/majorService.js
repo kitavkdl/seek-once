@@ -1,5 +1,5 @@
 // majorService.js
-const majorDao = require('../daos/majorDao'); // adjust path
+const majorDao = require('../dao/majorDao'); // adjust path
 
 async function listMajors() {
   // later: add filters, sorting, etc.
