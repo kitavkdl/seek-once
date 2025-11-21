@@ -27,3 +27,19 @@ export async function getMajorById(id) {
 
   return data;
 }
+
+// CREATE
+export async function createMajor({ dept, major_name, specialization }) {
+  const { data, error } = await supabase
+    .from('major')
+    .insert([{ dept, major_name, specialization }])
+    .select()
+    .single();
+
+  if (error) {
+    console.error('Error creating major:', error);
+    throw error;
+  }
+
+  return data;
+}
