@@ -4,6 +4,7 @@ import authRoutes from './routes/authRoutes.js';
 
 //wire routes
 import majorRoutes from './routes/majorRoutes.js';
+import minorRoutes from './routes/minorRoutes.js';
 import userRoutes from './routes/userRoutes.js';
 
 const app = express();
@@ -18,6 +19,7 @@ testConnection();
 app.use(express.json()); // allows JSON request bodies
 app.use('/api/auth', authRoutes);
 app.use('/api/majors', majorRoutes);
+app.use('/api/minors', minorRoutes);
 app.use('/api/users', userRoutes);
 
 app.listen(4000, () => {
