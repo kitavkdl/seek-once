@@ -1,6 +1,10 @@
 import express from 'express';
 import { supabase } from './config/supabaseClient.js';
 import authRoutes from './routes/authRoutes.js';
+
+//wire routes
+import majorRoutes from './routes/majorRoutes.js';
+
 const app = express();
 
 async function testConnection() {

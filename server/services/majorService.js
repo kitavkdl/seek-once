@@ -11,7 +11,13 @@ async function getMajor(id) {
   return majorDao.getMajorById(id);
 }
 
+export async function createMajor(payload) {
+  // you could validate required fields here
+  return majorDao.createMajor(payload);
+}
+
 module.exports = {
   listMajors,
   getMajor,
+  createMajor,
 };
