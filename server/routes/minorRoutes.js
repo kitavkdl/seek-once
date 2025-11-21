@@ -1,6 +1,7 @@
-const express = require('express');
+import express from 'express';
+import * as minorService from '../services/minorService.js';
+
 const router = express.Router();
-const minorService = require('../services/minorService'); 
 
 // GET /api/minors
 router.get('/', async (req, res, next) => {
@@ -19,7 +20,7 @@ router.get('/:id', async (req, res, next) => {
     const minor = await minorService.getMinor(id);
 
     if (!minor) {
-      return res.status(404).json({ message: 'Major not found' });
+      return res.status(404).json({ message: 'Minor not found' });
     }
 
     res.json(minor);
@@ -28,4 +29,4 @@ router.get('/:id', async (req, res, next) => {
   }
 });
 
-module.exports = router;
+export default router;
