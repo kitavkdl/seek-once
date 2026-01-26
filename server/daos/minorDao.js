@@ -1,8 +1,8 @@
-import { supabase } from '../config/supabaseClient.js';
+import { supabaseAdmin } from '../config/supabaseClient.js';
 
 // Get all majors
 export async function getAllMinors() {
-  const { data, error } = await supabase.from('minor').select('*');
+  const { data, error } = await supabaseAdmin.from('minor').select('*');
 
   if (error) {
     console.error('Error fetching minor:', error);
@@ -14,7 +14,8 @@ export async function getAllMinors() {
 
 // Get minor by id
 export async function getMajorById(id) {
-  const { data, error } = await supabase
+  const { data, error } = await supabaseAdmin
+
     .from('minor')
     .select('*')
     .eq('id', id)

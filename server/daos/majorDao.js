@@ -1,8 +1,8 @@
-import { supabase } from '../config/supabaseClient.js';
+import { supabaseAdmin } from '../config/supabaseClient.js';
 
 // Get all majors
 export async function getAllMajors() {
-  const { data, error } = await supabase.from('major').select('*');
+  const { data, error } = await supabaseAdmin.from('major').select('*');
 
   if (error) {
     console.error('Error fetching majors:', error);
@@ -14,7 +14,7 @@ export async function getAllMajors() {
 
 // Get major by id
 export async function getMajorById(id) {
-  const { data, error } = await supabase
+  const { data, error } = await supabaseAdmin
     .from('major')
     .select('*')
     .eq('id', id)
@@ -30,7 +30,7 @@ export async function getMajorById(id) {
 
 // CREATE
 export async function createMajor({ dept, major_name, specialization }) {
-  const { data, error } = await supabase
+  const { data, error } = await supabaseAdmin
     .from('major')
     .insert([{ dept, major_name, specialization }])
     .select()

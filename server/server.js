@@ -1,5 +1,5 @@
 import express from 'express';
-import { supabase } from './config/supabaseClient.js';
+import { supabaseAdmin } from './config/supabaseClient.js';
 import authRoutes from './routes/authRoutes.js';
 
 //wire routes
@@ -10,7 +10,9 @@ import userRoutes from './routes/userRoutes.js';
 const app = express();
 
 async function testConnection() {
-  const { data, error } = await supabase.from('profiles').select('*').limit(1);
+  // const { data, error } = await supabase.from('profiles').select('*').limit(1);
+  const { error } = await supabaseAdmin.from('school').select('id').limit(1);
+
   if (error) console.error('❌ Supabase connection failed:', error.message);
   else console.log('✅ Connected to Supabase successfully');
 }

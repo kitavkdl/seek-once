@@ -1,17 +1,22 @@
-// majorService.js
-const majorDao = require('../daos/majorDao'); // adjust path
+// server/services/majorService.js
+import * as majorDao from '../daos/majorDao.js';
 
-export async function listMajors() {
-  // later: add filters, sorting, etc.
-  return majorDao.getAllMajors();
+export async function listMajors(filters) {
+  return majorDao.getAllMajors(filters);
 }
 
 export async function getMajor(id) {
-  // later: throw custom errors, check permissions, etc.
   return majorDao.getMajorById(id);
 }
 
 export async function createMajor(payload) {
-  // you could validate required fields here
   return majorDao.createMajor(payload);
+}
+
+export async function updateMajor(id, payload) {
+  return majorDao.updateMajor(id, payload);
+}
+
+export async function removeMajor(id) {
+  return majorDao.deleteMajor(id);
 }

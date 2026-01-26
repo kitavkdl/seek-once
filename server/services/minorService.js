@@ -1,5 +1,5 @@
 // minorService.js
-const minorDao = require('../daos/minorDao'); // adjust path
+import * as minorDao from '../daos/minorDao.js';
 
 export async function listMinors() {
   // later: add filters, sorting, etc.
