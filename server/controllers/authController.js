@@ -108,3 +108,12 @@ export async function login(req, res) {
     return res.status(500).json({ error: e?.message ?? 'Unknown error' });
   }
 }
+
+//아직 괜춘 but the frontend should must
+//when client click logout, then
+//localStorage.removeItem("access_token");
+//localStorage.removeItem("refresh_token");
+//and return to the login page or home or etc.....
+export function logout(req, res) {
+  return res.json({ message: 'Logout successful' });
+}
