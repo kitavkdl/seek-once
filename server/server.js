@@ -1,6 +1,7 @@
 import express from 'express';
 import { supabaseAdmin } from './config/supabaseClient.js';
 import authRoutes from './routes/authRoutes.js';
+import userCourseRoutes from './routes/userCourseRoutes.js'; // adjust path if needed
 
 //wire routes
 import majorRoutes from './routes/majorRoutes.js';
@@ -23,7 +24,12 @@ app.use('/api/auth', authRoutes);
 app.use('/api/majors', majorRoutes);
 app.use('/api/minors', minorRoutes);
 app.use('/api/users', userRoutes);
+app.use('/api/user-courses', userCourseRoutes);
 
 app.listen(4000, () => {
   console.log('🚀 Server running on http://localhost:4000');
+});
+
+app.get('/api/debug', (req, res) => {
+  res.json({ working: true });
 });
