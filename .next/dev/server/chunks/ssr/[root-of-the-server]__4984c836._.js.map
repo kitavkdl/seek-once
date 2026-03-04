@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 18, "column": 0}, "map": {"version":3,"sources":["file:///Users/chaewon/Desktop/projects/seek-once/my-app/app/utilities/course-coordinator/page.tsx"],"sourcesContent":["export default function CourseCoordinatorPage() {\n  return (\n    <main>\n      <h1>Course Coordinator</h1>\n    </main>\n  );\n}\n"],"names":[],"mappings":";;;;;;AAAe,SAAS;IACtB,qBACE,2PAAC;kBACC,cAAA,2PAAC;sBAAG;;;;;;;;;;;AAGV"}}]
+}

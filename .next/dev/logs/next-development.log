@@ -1,0 +1,19 @@
+[00:00:00.669] Server  LOG     ✓ Ready in 463ms
+[00:00:02.708] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:16.598] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:50.243] Browser LOG     Sign up successful: {"email":"d@d","firstName":"Dahyun","lastName":"Eom","major":"Applied Mathematics and Statistics","minor":"","password":"dd","school":"Stonybrook University","semester":"Spring 2024"}
+[00:00:50.374] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:54.814] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:55.957] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:57.126] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:58.035] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:03:38.401] Server  LOG     ✓ Compiled in 53ms
+[00:04:06.327] Browser LOG     Login successful: {"email":"d@d","password":"d"}
+[00:04:14.018] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:04:29.866] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:05:02.333] Browser LOG     Sign up successful: {"email":"dahyun@gmail.com","firstName":"Dahyun","lastName":"Eom","major":"Applied Mathematics and Statistics","minor":"","password":"1234","school":"Stonybrook University","semester":"Spring 2024"}
+[00:05:02.468] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:05:28.711] Server  LOG     ✓ Compiled in 11ms
+[00:06:07.020] Browser LOG     Login successful: {"email":"d@d","password":"1234"}
+[00:06:10.444] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:07:40.022] Server  LOG     ✓ Compiled in 9ms

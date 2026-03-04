@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 18, "column": 0}, "map": {"version":3,"sources":["file:///Users/chaewon/Desktop/projects/tutorial/my-app/app/hello/world/page.tsx"],"sourcesContent":["import Image from \"next/image\";\n\nexport default function Home() {\n  return (\n    <div className=\"flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black\">\n      <main className=\"flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start\">\n          <a\n            className=\"flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]\"\n            href=\"https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app\"\n            target=\"_blank\"\n            rel=\"noopener noreferrer\"\n          >\n            Documentation\n          </a>\n      </main>\n    </div>\n  );\n}\n"],"names":[],"mappings":";;;;;;AAEe,SAAS;IACtB,qBACE,8OAAC;QAAI,WAAU;kBACb,cAAA,8OAAC;YAAK,WAAU;sBACZ,cAAA,8OAAC;gBACC,WAAU;gBACV,MAAK;gBACL,QAAO;gBACP,KAAI;0BACL;;;;;;;;;;;;;;;;AAMX"}}]
+}

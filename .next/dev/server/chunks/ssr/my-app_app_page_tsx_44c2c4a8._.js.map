@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 4, "column": 0}, "map": {"version":3,"sources":["file:///Users/chaewon/Desktop/projects/seek-once/my-app/app/page.tsx"],"sourcesContent":["'use client';\n\nimport { useEffect } from 'react';\nimport { useRouter } from 'next/navigation';\n\nexport default function Chaewon() {\n  const router = useRouter();\n\n  useEffect(() => {\n    const userData = localStorage.getItem('userData');\n    if (userData) {\n      router.push('/home');\n    } else {\n      router.push('/login');\n    }\n  }, [router]);\n\n  return null;\n}\n"],"names":[],"mappings":";;;;AAEA;AACA;AAHA;;;AAKe,SAAS;IACtB,MAAM,SAAS,IAAA,4JAAS;IAExB,IAAA,+NAAS,EAAC;QACR,MAAM,WAAW,aAAa,OAAO,CAAC;QACtC,IAAI,UAAU;YACZ,OAAO,IAAI,CAAC;QACd,OAAO;YACL,OAAO,IAAI,CAAC;QACd;IACF,GAAG;QAAC;KAAO;IAEX,OAAO;AACT"}}]
+}

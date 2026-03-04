@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 18, "column": 0}, "map": {"version":3,"sources":["file:///Users/chaewon/Desktop/projects/tutorial/my-app/components/Title.tsx"],"sourcesContent":["export default function Title({ title }: { title: string }) {\n  let variable = \"string\";\n\n  return (\n    <div>\n        <h1>{title}</h1>\n        <p>{variable}</p>\n    </div>\n  );\n}\n"],"names":[],"mappings":";;;;;;AAAe,SAAS,MAAM,EAAE,KAAK,EAAqB;IACxD,IAAI,WAAW;IAEf,qBACE,8OAAC;;0BACG,8OAAC;0BAAI;;;;;;0BACL,8OAAC;0BAAG;;;;;;;;;;;;AAGZ"}},
+    {"offset": {"line": 53, "column": 0}, "map": {"version":3,"sources":["file:///Users/chaewon/Desktop/projects/tutorial/my-app/app/utilities/gpa-calculator/page.tsx"],"sourcesContent":["import Title from \"@/components/Title\";\n\nexport default function GPACalculatorPage() {\n  return (\n    <div>\n      <main>\n        <h1 className=\"text-red-600 hover:text-black\">GPA Calculator</h1>\n        <Title title=\"title hello\"></Title>\n      </main>\n    </div>\n  );\n}\n"],"names":[],"mappings":";;;;;AAAA;;;AAEe,SAAS;IACtB,qBACE,8OAAC;kBACC,cAAA,8OAAC;;8BACC,8OAAC;oBAAG,WAAU;8BAAgC;;;;;;8BAC9C,8OAAC,+HAAK;oBAAC,OAAM;;;;;;;;;;;;;;;;;AAIrB"}}]
+}
