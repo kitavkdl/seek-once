@@ -1,6 +1,8 @@
 'use client';
 
 import { useState } from 'react';
+import { apiRequest } from '../lib/api';
+import { SCHOOL_ID, MAJOR_ID, MINOR_ID, SEMESTER_ID } from '../lib/maps';
 
 interface SignUpProps {
   onBack: () => void;
@@ -35,21 +37,55 @@ export default function SignUp({ onBack }: SignUpProps) {
       'Psychology',
       'Urban Ecology',
     ],
-    FIT: ['Fashion Business Management', 'Fashion Design'],
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (firstName && lastName && email && password && school && major && semester) {
-      const userData = { firstName, lastName, email, password, school, major, minor, semester };
-      localStorage.setItem('userData', JSON.stringify(userData));
-      localStorage.setItem('userId', email);
-      console.log('Sign up successful:', userData);
+  // const handleSubmit = (e: React.FormEvent) => {
+  //   e.preventDefault();
+  //   if (firstName && lastName && email && password && school && major && semester) {
+  //     const userData = { firstName, lastName, email, password, school, major, minor, semester };
+  //     localStorage.setItem('userData', JSON.stringify(userData));
+  //     localStorage.setItem('userId', email);
+  //     console.log('Sign up successful:', userData);
 
-      // Redirect to home page
-      window.location.href = '/home';
-    } else {
-      alert('Please fill in all required fields');
+  //     // Redirect to home page
+  //     window.location.href = '/home';
+  //   } else {
+  //     alert('Please fill in all required fields');
+  //   }
+  // };
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    const payload = {
+      email,
+      password,
+      school_id: SCHOOL_ID[school],
+      major_id: MAJOR_ID[`${school}|${major}`],
+      minor_id: minor ? MINOR_ID[`${school}|${minor}`] : null, // keep null for now
+      enrolled_semester: SEMESTER_ID[`${school}|${semester}`],
+      first_name: firstName,
+      last_name: lastName,
+    };
+
+    if (!payload.school_id || !payload.major_id || !payload.enrolled_semester) {
+      alert('ID mapping failed. Check your maps.ts (school/major/semester).');
+      return;
+    }
+
+    try {
+      const data = await apiRequest('/api/auth/signup', {
+        method: 'POST',
+        body: payload,
+      });
+
+      console.log('Signup success:', data);
+      onBack(); // go back to login
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        alert(err.message);
+      } else {
+        alert('An unknown error occurred');
+      }
     }
   };
 
@@ -136,7 +172,6 @@ export default function SignUp({ onBack }: SignUpProps) {
           >
             <option value="">Select a school</option>
             <option value="Stonybrook University">Stonybrook University</option>
-            <option value="FIT">FIT</option>
             <option value="Utah University">Utah University</option>
           </select>
         </div>

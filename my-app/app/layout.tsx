@@ -14,15 +14,30 @@ export default function RootLayout({
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const router = useRouter();
 
+  // useEffect(() => {
+  //   const userData = localStorage.getItem('userData');
+  //   if (userData) {
+  //     try {
+  //       const parsed = JSON.parse(userData);
+  //       setUserFirstName(parsed.first_name);
+  //       setIsLoggedIn(true);
+  //     } catch (e) {
+  //       console.error('Failed to parse userData:', e);
+  //     }
+  //   }
+  // }, []);
   useEffect(() => {
+    const token = localStorage.getItem('token');
     const userData = localStorage.getItem('userData');
-    if (userData) {
+
+    if (token && userData) {
       try {
         const parsed = JSON.parse(userData);
-        setUserFirstName(parsed.firstName);
+
+        setUserFirstName(parsed.first_name || parsed.email || 'User');
         setIsLoggedIn(true);
       } catch (e) {
-        console.error('Failed to parse userData:', e);
+        console.error('Failed to parse userData');
       }
     }
   }, []);
@@ -30,6 +45,8 @@ export default function RootLayout({
   const handleLogout = () => {
     localStorage.removeItem('userData');
     localStorage.removeItem('userId');
+    localStorage.removeItem('token');
+
     setIsLoggedIn(false);
     setUserFirstName('');
     router.push('/login');
@@ -52,7 +69,7 @@ export default function RootLayout({
             </Link>
           </div>
 
-          {isLoggedIn && userFirstName && (
+          {isLoggedIn && (
             <div className="flex items-center gap-3">
               <span className="text-2xl">👤</span>
               <span className="text-lg font-semibold text-white">{userFirstName}</span>

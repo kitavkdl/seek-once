@@ -1,6 +1,22 @@
 'use client';
-
+import { apiRequest } from '../lib/api';
 import { useState } from 'react';
+
+type LoginResponse = {
+  message: string;
+  user: {
+    id: number;
+    first_name: string;
+    last_name: string;
+    school_id: number;
+    major_id: number;
+    minor_id: number | null;
+    enrolled_semester: number;
+  };
+  session?: {
+    access_token: string;
+  };
+};
 
 interface LoginModalProps {
   isOpen: boolean;
@@ -11,15 +27,37 @@ export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleSubmit = (e: React.FormEvent) => {
+  // const handleSubmit = (e: React.FormEvent) => {
+  //   e.preventDefault();
+
+  //   if (email && password) {
+  //     localStorage.setItem('userId', email);
+  //     console.log('Login successful:', { email, password });
+  //     window.location.href = '/';
+  //   } else {
+  //     alert('Please enter both email and password');
+  //   }
+  // };
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (email && password) {
-      localStorage.setItem('userId', email);
-      console.log('Login successful:', { email, password });
+    try {
+      const data = await apiRequest<LoginResponse>('/api/auth/login', {
+        method: 'POST',
+        body: { email, password },
+      });
+
+      localStorage.setItem('userId', String(data.user.id));
+      localStorage.setItem('userData', JSON.stringify(data.user));
+
       window.location.href = '/';
-    } else {
-      alert('Please enter both email and password');
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        alert(err.message);
+      } else {
+        alert('Login failed');
+      }
     }
   };
 

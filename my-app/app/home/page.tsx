@@ -29,7 +29,7 @@ export default function HomePage() {
   return (
     <div className="min-h-screen bg-gray-50 p-8">
       <div className="mx-auto max-w-4xl">
-        <h1 className="mb-8 text-4xl font-bold">Welcome, {userData?.firstName}! 👤</h1>
+        <h1 className="mb-8 text-4xl font-bold">Welcome, {userData?.first_name}! 👤</h1>
 
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
           {/* User Profile Card */}
@@ -37,8 +37,8 @@ export default function HomePage() {
             <h2 className="mb-4 text-2xl font-bold">User Profile</h2>
             <div className="space-y-3">
               <p>
-                <span className="font-semibold">Name:</span> {userData?.firstName}{' '}
-                {userData?.lastName}
+                <span className="font-semibold">Name:</span> {userData?.first_name}{' '}
+                {userData?.last_name}
               </p>
               <p>
                 <span className="font-semibold">Email:</span> {userData?.email}
