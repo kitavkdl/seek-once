@@ -33,6 +33,7 @@ export default function RootLayout({
     setIsLoggedIn(false);
     setUserFirstName('');
     router.push('/login');
+    console.log('log out successful');
   };
 
   return (

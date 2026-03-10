@@ -2,14 +2,14 @@
 
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import SignUp from './SignUp';
+// import SignUp from './SignUp';
 
 export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [showForm, setShowForm] = useState(false);
-  const [isSignUp, setIsSignUp] = useState(false);
+  // const [isSignUp, setIsSignUp] = useState(false);
   const router = useRouter();
 
   useEffect(() => {
@@ -84,9 +84,9 @@ export default function Login() {
     );
   }
 
-  if (isSignUp) {
-    return <SignUp onBack={() => setIsSignUp(false)} />;
-  }
+  // if (isSignUp) {
+  //   return <SignUp onBack={() => setIsSignUp(false)} />;
+  // }
 
   return (
     <div className="w-full max-w-md rounded-lg bg-white p-8 shadow-md">
@@ -128,7 +128,8 @@ export default function Login() {
           Don't have an account?{' '}
           <button
             type="button"
-            onClick={() => setIsSignUp(true)}
+            // onClick={() => setIsSignUp(true)}
+            onClick={() => router.push('/login/signup')}
             className="text-blue-600 hover:underline"
           >
             Sign Up

@@ -1,3 +1,4 @@
+//to redirect users based on login status.
 'use client';
 
 import { useEffect } from 'react';

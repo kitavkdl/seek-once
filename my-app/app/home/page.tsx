@@ -1,4 +1,5 @@
 'use client';
+//로그인 후에 welcome 하는애 (실질적 홈페이지)
 
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
