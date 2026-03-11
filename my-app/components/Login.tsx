@@ -1,52 +1,99 @@
 'use client';
 
+import { useAuth } from '@/lib/AuthContext';
 import { useState, useEffect } from 'react';
+import { apiRequest } from '@/lib/api';
 import { useRouter } from 'next/navigation';
 // import SignUp from './SignUp';
 
 export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  // const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [showForm, setShowForm] = useState(false);
   // const [isSignUp, setIsSignUp] = useState(false);
+  const { setUser } = useAuth();
   const router = useRouter();
 
+  // useEffect(() => {
+  //   // Check if user is already logged in
+  //   const storedUserId = localStorage.getItem('userId');
+  //   if (storedUserId) {
+  //     setIsLoggedIn(true);
+  //   }
+  // }, []);
   useEffect(() => {
-    // Check if user is already logged in
-    const storedUserId = localStorage.getItem('userId');
-    if (storedUserId) {
-      setIsLoggedIn(true);
-    }
-  }, []);
+    const token = localStorage.getItem('token');
 
-  const handleSubmit = (e: React.FormEvent) => {
+    if (token) {
+      router.replace('/home');
+    }
+  }, [router]);
+  // const handleSubmit = (e: React.FormEvent) => {
+  //   e.preventDefault();
+
+  //   // Validate credentials
+  //   if (email && password) {
+  //     // Create userData object for login
+  //     const userData = {
+  //       email,
+  //       password,
+  //       firstName: 'User', // Default value for login users
+  //       lastName: '',
+  //       school: '',
+  //       major: '',
+  //       minor: '',
+  //       semester: '',
+  //     };
+
+  //     // Store user data in localStorage
+  //     localStorage.setItem('userData', JSON.stringify(userData));
+  //     localStorage.setItem('userId', email);
+  //     console.log('Login successful:', { email, password });
+
+  //     // Redirect to home page and reload
+  //     window.location.href = '/home';
+  //   } else {
+  //     console.log('Login failed: Missing credentials');
+  //     alert('Please enter both email and password');
+  //   }
+  // };
+
+  interface LoginResponse {
+    token?: string;
+    user: {
+      id: string;
+      email: string;
+      first_name?: string;
+      last_name?: string;
+    };
+  }
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    // Validate credentials
-    if (email && password) {
-      // Create userData object for login
-      const userData = {
-        email,
-        password,
-        firstName: 'User', // Default value for login users
-        lastName: '',
-        school: '',
-        major: '',
-        minor: '',
-        semester: '',
-      };
+    try {
+      const data = await apiRequest<LoginResponse>('/api/auth/login', {
+        method: 'POST',
+        body: { email, password },
+      });
 
-      // Store user data in localStorage
-      localStorage.setItem('userData', JSON.stringify(userData));
-      localStorage.setItem('userId', email);
-      console.log('Login successful:', { email, password });
+      if (data.token) {
+        localStorage.setItem('token', data.token);
+      }
 
-      // Redirect to home page and reload
-      window.location.href = '/home';
-    } else {
-      console.log('Login failed: Missing credentials');
-      alert('Please enter both email and password');
+      // localStorage.setItem('userId', data.user.id);
+      localStorage.setItem('userData', JSON.stringify(data.user));
+
+      setUser(data.user); // ⭐ this updates the layout instantly
+
+      router.replace('/home');
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        alert(err.message);
+      } else {
+        alert('Login failed');
+      }
     }
   };
 
@@ -54,20 +101,20 @@ export default function Login() {
     router.push('/home');
   };
 
-  if (isLoggedIn) {
-    return (
-      <div className="w-full max-w-md rounded-lg bg-white p-8 shadow-md">
-        <h1 className="mb-6 text-center text-2xl font-bold">Already Logged In</h1>
-        <p className="mb-6 text-center text-gray-600">You are already logged in!</p>
-        <button
-          onClick={handleGoHome}
-          className="w-full rounded-lg bg-blue-800 py-2 font-semibold text-white transition hover:bg-blue-700"
-        >
-          Go to Home
-        </button>
-      </div>
-    );
-  }
+  // if (isLoggedIn) {
+  //   return (
+  //     <div className="w-full max-w-md rounded-lg bg-white p-8 shadow-md">
+  //       <h1 className="mb-6 text-center text-2xl font-bold">Already Logged In</h1>
+  //       <p className="mb-6 text-center text-gray-600">You are already logged in!</p>
+  //       <button
+  //         onClick={handleGoHome}
+  //         className="w-full rounded-lg bg-blue-800 py-2 font-semibold text-white transition hover:bg-blue-700"
+  //       >
+  //         Go to Home
+  //       </button>
+  //     </div>
+  //   );
+  // }
 
   if (!showForm) {
     return (
@@ -125,7 +172,7 @@ export default function Login() {
           Sign In
         </button>
         <p className="text-center text-sm">
-          Don't have an account?{' '}
+          Don&apos;t have an account?{' '}
           <button
             type="button"
             // onClick={() => setIsSignUp(true)}

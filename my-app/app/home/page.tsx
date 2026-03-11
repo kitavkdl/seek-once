@@ -12,13 +12,13 @@ export default function HomePage() {
   useEffect(() => {
     const storedData = localStorage.getItem('userData');
     if (!storedData) {
-      router.push('/login');
+      router.replace('/login');
       return;
     }
     try {
       setUserData(JSON.parse(storedData));
     } catch (e) {
-      router.push('/login');
+      router.replace('/login');
     }
     setIsLoading(false);
   }, [router]);

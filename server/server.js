@@ -1,4 +1,5 @@
 import express from 'express';
+import cors from 'cors';
 import { supabaseAdmin } from './config/supabaseClient.js';
 import authRoutes from './routes/authRoutes.js';
 import userCourseRoutes from './routes/userCourseRoutes.js'; // adjust path if needed
@@ -19,6 +20,12 @@ async function testConnection() {
 }
 
 testConnection();
+app.use(
+  cors({
+    origin: 'http://localhost:3000',
+  })
+);
+
 app.use(express.json()); // allows JSON request bodies
 app.use('/api/auth', authRoutes);
 app.use('/api/majors', majorRoutes);
